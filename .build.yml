@@ -49,4 +49,4 @@ tasks:
       && git config --local user.name "alfador" \
       && git config --local user.email "contact@havi.dev" \
       && git rebase --root -x "git commit --amend --reset-author -CHEAD" \
-      && git push --force --prune mpr +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/* master
+      && git push --force --prune mpr master
