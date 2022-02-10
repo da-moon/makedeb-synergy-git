@@ -3,7 +3,7 @@ environment:
   REPO_NAME: "makedeb-synergy-git"
 secrets:
   - 911a32c9-a8b4-4d41-9fe0-18df25523b2f
-  - 2f9a66d4-1c70-4b7f-95ae-7c64349ebeb0
+  - d98dc1cd-6fda-4edc-b1b2-fe047886124c 
 sources:
   - "https://git.sr.ht/~havi/makedeb-synergy-git"
 tasks:
@@ -21,7 +21,7 @@ tasks:
         echo "  IdentityFile ~/.ssh/911a32c9-a8b4-4d41-9fe0-18df25523b2f" ; \
         echo "  IdentitiesOnly yes" ; \
         echo "  BatchMode yes" ; \
-      ) | tee "${HOME}/.ssh/config" > /dev/null \
+      ) | tee -a "${HOME}/.ssh/config" > /dev/null \
       && chmod 644 "${HOME}/.ssh/config" ;
   - mirror-to-github: |
       cd "${HOME}/${REPO_NAME}" || exit 1 ;
@@ -35,13 +35,13 @@ tasks:
       && chmod 700 "${HOME}/.ssh" \
       && ( \
         echo "Host mpr.makedeb.org" ; \
-        echo "  IdentityFile ~/.ssh/2f9a66d4-1c70-4b7f-95ae-7c64349ebeb0" ; \
+        echo "  IdentityFile ~/.ssh/d98dc1cd-6fda-4edc-b1b2-fe047886124c" ; \
         echo "  User mpr" ; \
         echo "  IdentitiesOnly yes" ; \
         echo "  StrictHostKeyChecking no" ; \
         echo "  MACs hmac-sha2-512" ; \
         echo "  UserKnownHostsFile=/dev/null" ; \
-      ) | tee "${HOME}/.ssh/config" > /dev/null \
+      ) | tee -a "${HOME}/.ssh/config" > /dev/null \
       && chmod 644 "${HOME}/.ssh/config"
   - push-to-makedeb: |
       cd "${HOME}/${REPO_NAME}" || exit 1 ;
